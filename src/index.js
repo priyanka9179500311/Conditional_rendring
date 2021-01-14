@@ -1,17 +1,47 @@
-import React from 'react';
+//import area
+//import something from 'somelibrary';
+
+import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+//Create an class Component
+class Myclass extends Component{
+    //1.Property
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+    state = {}
+    
+    //2.Constructor
+    constructor(props){
+        super(props);
+        this.state = { isLoggedIn: true };
+    }
+
+    //3.Method
+    //Every method must have render method
+    render(){
+        //Every render method always return HTML
+        //lets create a local variable
+        let {isLoggedIn} = this.state;
+        return(
+            <div>
+                <h1>Conditional Rendering</h1>
+                {
+                    //immediately-invoked function expression
+                    //(function(){})()
+                    (function(){
+                        if(isLoggedIn){
+                            //True
+                            return <button>Logged Out</button>
+                        }else{
+                            //False
+                            return <button>isLogged In</button>
+                        }
+                    })()
+                }
+            </div>
+        );
+    }
+}
+
+//object.method();
+ReactDOM.render(<Myclass />,document.getElementById('root'));//actual argument
